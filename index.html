@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibhu Vineet Kumar — SAP SD Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --ink: #0f0f0d;
+  --ink2: #2a2a26;
+  --ink3: #4a4a44;
+  --muted: #7a7a72;
+  --faint: #b8b8b0;
+  --rule: #d8d8d0;
+  --bg: #fafaf7;
+  --bg2: #f2f2ec;
+  --bg3: #e8e8e0;
+  --red: #c0271a;
+  --red2: #a01e14;
+  --red-light: #fdf0ee;
+  --gold: #8b6914;
+  --gold-light: #faf4e6;
+}
+body { background:var(--bg); color:var(--ink); font-family:'Barlow',sans-serif; font-weight:400; line-height:1.6; overflow-x:hidden; }
+
+/* MASTHEAD */
+.masthead { border-bottom:3px double var(--rule); padding:0 60px; display:flex; align-items:center; justify-content:space-between; height:56px; position:sticky; top:0; background:var(--bg); z-index:100; }
+.masthead-logo { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink); text-decoration:none; }
+.masthead-logo span { color:var(--red); }
+.masthead-nav { display:flex; gap:28px; list-style:none; }
+.masthead-nav a { font-family:'Barlow Condensed',sans-serif; font-size:12px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--ink3); text-decoration:none; transition:color .2s; }
+.masthead-nav a:hover { color:var(--red); }
+
+/* HERO */
+.hero { display:grid; grid-template-columns:1fr 360px; min-height:calc(100vh - 56px); border-bottom:1px solid var(--rule); }
+.hero-main { padding:80px 60px 60px; border-right:1px solid var(--rule); display:flex; flex-direction:column; justify-content:space-between; }
+.hero-kicker { font-family:'Barlow Condensed',sans-serif; font-size:12px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--red); display:flex; align-items:center; gap:10px; margin-bottom:28px; }
+.hero-kicker::before { content:''; width:24px; height:1px; background:var(--red); }
+.hero-headline { font-family:'Playfair Display',serif; font-size:clamp(52px,6vw,88px); font-weight:900; line-height:1.0; color:var(--ink); margin-bottom:32px; letter-spacing:-.02em; }
+.hero-headline em { font-style:italic; color:var(--red); }
+.hero-deck { font-size:17px; font-weight:300; color:var(--ink3); line-height:1.8; max-width:520px; margin-bottom:40px; border-left:3px solid var(--red); padding-left:20px; }
+.hero-byline { display:flex; align-items:center; gap:24px; padding-top:32px; border-top:1px solid var(--rule); }
+.byline-role { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink2); }
+.byline-sep { width:1px; height:32px; background:var(--rule); }
+.byline-firm { font-size:13px; color:var(--muted); }
+.btn-red { display:inline-flex; align-items:center; gap:8px; padding:13px 32px; background:var(--red); color:#fff; font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; transition:background .2s,transform .15s; }
+.btn-red:hover { background:var(--red2); transform:translateY(-1px); }
+.btn-ghost { display:inline-flex; align-items:center; gap:8px; padding:12px 32px; background:transparent; color:var(--ink); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; border:1px solid var(--ink3); transition:border-color .2s,color .2s; }
+.btn-ghost:hover { border-color:var(--red); color:var(--red); }
+
+/* HERO SIDEBAR */
+.hero-sidebar { padding:48px 36px; background:var(--ink); color:#fff; display:flex; flex-direction:column; gap:32px; }
+.sidebar-badge { background:var(--red); color:#fff; padding:8px 14px; font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; display:inline-block; margin-bottom:8px; }
+.stat-block { border-top:1px solid rgba(255,255,255,.1); padding-top:24px; }
+.stat-label-s { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:6px; }
+.stat-value-s { font-family:'Playfair Display',serif; font-size:36px; font-weight:700; color:#fff; line-height:1; margin-bottom:4px; }
+.stat-sub-s { font-size:12px; color:rgba(255,255,255,.45); }
+.progress-wrap { margin-top:10px; }
+.progress-track { height:3px; background:rgba(255,255,255,.1); }
+.progress-bar-fill { height:3px; background:var(--red); width:0; transition:width 1.6s cubic-bezier(.22,1,.36,1); }
+.progress-bar-fill.gold-bar { background:#c9a227; }
+.skill-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+.chip { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:600; letter-spacing:.08em; padding:4px 9px; border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.55); text-transform:uppercase; }
+.chip.hot { border-color:var(--red); color:rgba(255,140,130,.9); }
+
+/* SECTIONS */
+section { padding:80px 60px; border-bottom:1px solid var(--rule); }
+.section-header { display:grid; grid-template-columns:64px 1fr; gap:24px; align-items:start; margin-bottom:56px; }
+.section-num { font-family:'Playfair Display',serif; font-size:52px; font-weight:900; color:var(--rule); line-height:1; letter-spacing:-.03em; }
+.section-kicker { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-bottom:8px; }
+.section-title { font-family:'Playfair Display',serif; font-size:clamp(26px,3vw,38px); font-weight:700; line-height:1.15; color:var(--ink); }
+
+/* S4HANA */
+.s4-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--rule); }
+.s4-card { background:var(--bg); padding:32px 28px; position:relative; transition:background .2s; }
+.s4-card:hover { background:var(--bg2); }
+.s4-card::after { content:''; position:absolute; bottom:0;left:0;right:0; height:2px; background:transparent; transition:background .2s; }
+.s4-card:hover::after { background:var(--red); }
+.s4-card-num { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.18em; color:var(--faint); margin-bottom:14px; }
+.s4-card-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--ink); margin-bottom:12px; line-height:1.3; }
+.s4-card-body { font-size:13px; color:var(--ink3); line-height:1.75; margin-bottom:16px; }
+.s4-tags { display:flex; flex-wrap:wrap; gap:5px; }
+.tag-s { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:600; letter-spacing:.1em; padding:3px 8px; background:var(--bg2); color:var(--ink3); text-transform:uppercase; border:1px solid var(--rule); }
+.tag-s.red { background:var(--red-light); color:var(--red); border-color:#f0c0bb; }
+.tag-s.gold { background:var(--gold-light); color:var(--gold); border-color:#e0cc90; }
+
+/* O2C */
+.o2c-section { background:var(--ink); color:#fff; }
+.o2c-section .section-num { color:rgba(255,255,255,.08); }
+.o2c-section .section-kicker { color:#e07060; }
+.o2c-section .section-title { color:#fff; }
+.o2c-steps { display:flex; border:1px solid rgba(255,255,255,.1); margin-bottom:2px; overflow-x:auto; }
+.o2c-step { flex:1; min-width:120px; padding:20px 16px; border-right:1px solid rgba(255,255,255,.07); cursor:pointer; transition:background .2s; text-align:center; }
+.o2c-step:last-child { border-right:none; }
+.o2c-step:hover { background:rgba(255,255,255,.04); }
+.o2c-step.active { background:var(--red); }
+.o2c-step-n { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:.2em; color:rgba(255,255,255,.3); margin-bottom:6px; }
+.o2c-step.active .o2c-step-n { color:rgba(255,255,255,.7); }
+.o2c-step-name { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:600; letter-spacing:.06em; color:rgba(255,255,255,.6); margin-bottom:4px; text-transform:uppercase; }
+.o2c-step.active .o2c-step-name { color:#fff; }
+.o2c-step-code { font-size:11px; color:rgba(255,255,255,.25); }
+.o2c-step.active .o2c-step-code { color:rgba(255,255,255,.6); }
+.o2c-detail-area { border:1px solid rgba(255,255,255,.1); padding:40px; display:none; }
+.o2c-detail-area.active { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+.o2c-detail-title { font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:#fff; margin-bottom:6px; }
+.o2c-detail-sub { font-size:12px; color:rgba(255,255,255,.4); font-family:'Barlow Condensed',sans-serif; letter-spacing:.12em; text-transform:uppercase; margin-bottom:20px; }
+.o2c-detail-body { font-size:14px; color:rgba(255,255,255,.65); line-height:1.85; }
+.o2c-meta-row { padding:14px 0; border-bottom:1px solid rgba(255,255,255,.07); }
+.o2c-meta-label { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.25); margin-bottom:4px; }
+.o2c-meta-val { font-size:13px; color:rgba(255,255,255,.7); }
+
+/* INTEGRATION */
+.int-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--rule); margin-bottom:1px; }
+.int-card { background:var(--bg); padding:32px 28px; }
+.int-card-header { display:flex; align-items:baseline; gap:12px; margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--rule); }
+.int-card-title { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--ink); }
+.int-card-badge { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; padding:3px 8px; background:var(--red-light); color:var(--red); }
+.int-list { list-style:none; font-size:13px; color:var(--ink3); line-height:2; }
+.int-list li { border-bottom:1px dotted var(--rule); padding:2px 0; }
+.int-list li:last-child { border:none; }
+.int-list li::before { content:'— '; color:var(--red); }
+
+/* PROJECTS */
+.proj-section { background:var(--bg2); }
+.proj-article { display:grid; grid-template-columns:200px 1fr; border:1px solid var(--rule); margin-bottom:2px; background:var(--bg); }
+.proj-spine { background:var(--ink); color:#fff; padding:36px 24px; display:flex; flex-direction:column; justify-content:space-between; }
+.proj-client { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:#fff; margin-bottom:6px; }
+.proj-industry { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:24px; }
+.proj-spine-meta { font-size:11px; color:rgba(255,255,255,.35); line-height:1.9; }
+.proj-spine-meta strong { display:block; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.2); font-family:'Barlow Condensed',sans-serif; margin-top:10px; margin-bottom:2px; font-weight:700; }
+.proj-body { padding:36px 40px; }
+.proj-title { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--ink); margin-bottom:12px; line-height:1.3; }
+.proj-lead { font-size:14px; color:var(--ink3); line-height:1.85; margin-bottom:28px; }
+.deliverables-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.deliverable { padding:10px 14px; background:var(--bg2); font-size:12px; color:var(--ink3); border-left:2px solid var(--red); line-height:1.5; }
+
+/* EXPERTISE */
+.skills-layout { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); }
+.skill-group { background:var(--bg); padding:32px 28px; }
+.skill-group-title { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-bottom:24px; padding-bottom:12px; border-bottom:1px solid var(--rule); }
+.skill-row { margin-bottom:16px; }
+.skill-header { display:flex; justify-content:space-between; margin-bottom:6px; align-items:baseline; }
+.skill-name { font-size:13px; font-weight:500; color:var(--ink2); }
+.skill-pct { font-family:'Barlow Condensed',sans-serif; font-size:12px; font-weight:700; color:var(--muted); letter-spacing:.05em; }
+.skill-track { height:2px; background:var(--bg3); }
+.skill-fill { height:2px; width:0; background:var(--red); transition:width 1.6s cubic-bezier(.22,1,.36,1); }
+.skill-fill.alt { background:var(--ink2); }
+
+/* TCODE TABLE */
+.tcode-table { width:100%; border-collapse:collapse; font-size:12px; margin-top:48px; }
+.tcode-table thead tr { background:var(--ink); color:#fff; }
+.tcode-table th { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; padding:12px 16px; text-align:left; }
+.tcode-table td { padding:10px 16px; border-bottom:1px solid var(--rule); color:var(--ink3); }
+.tcode-table tr:hover td { background:var(--bg2); }
+.tcode-table td:first-child { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:13px; color:var(--red); letter-spacing:.04em; }
+.tcode-table tr:nth-child(even) td { background:var(--bg2); }
+.tcode-table tr:nth-child(even):hover td { background:var(--bg3); }
+
+/* PRICING CALLOUT */
+.pricing-callout { background:var(--ink); color:#fff; padding:48px 52px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; margin-top:1px; }
+.pc-kicker { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:8px; }
+.pc-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:#fff; margin-bottom:10px; line-height:1.3; }
+.pc-body { font-size:13px; color:rgba(255,255,255,.5); line-height:1.8; }
+
+/* CONTACT */
+.contact-section { background:var(--bg2); padding:100px 60px; text-align:center; border-bottom:1px solid var(--rule); }
+.contact-headline { font-family:'Playfair Display',serif; font-size:clamp(36px,5vw,64px); font-weight:900; line-height:1.1; color:var(--ink); margin-bottom:20px; }
+.contact-headline em { font-style:italic; color:var(--red); }
+.contact-sub { font-size:16px; font-weight:300; color:var(--ink3); max-width:520px; margin:0 auto 40px; line-height:1.8; }
+.contact-btns { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:48px; }
+.status-strip { display:inline-flex; gap:32px; padding:20px 36px; border:1px solid var(--rule); background:var(--bg); }
+.status-item { font-size:13px; color:var(--ink3); display:flex; align-items:center; gap:8px; }
+.status-dot { width:7px; height:7px; border-radius:50%; background:var(--red); display:inline-block; }
+.status-dot.green { background:#2ea84e; }
+.status-dot.gold { background:var(--gold); }
+
+/* FOOTER */
+footer { padding:24px 60px; border-top:3px double var(--rule); display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--muted); }
+footer strong { color:var(--ink2); font-weight:500; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.fu { opacity:0; animation:fadeUp .7s cubic-bezier(.22,1,.36,1) forwards; }
+.d1{animation-delay:.1s} .d2{animation-delay:.22s} .d3{animation-delay:.36s} .d4{animation-delay:.5s}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .masthead{padding:0 24px}
+  .masthead-nav{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-main{padding:48px 24px 40px}
+  .hero-sidebar{padding:36px 24px}
+  section{padding:56px 24px}
+  .s4-grid{grid-template-columns:1fr}
+  .o2c-detail-area.active{grid-template-columns:1fr}
+  .int-grid{grid-template-columns:1fr}
+  .proj-article{grid-template-columns:1fr}
+  .skills-layout{grid-template-columns:1fr}
+  .deliverables-grid{grid-template-columns:1fr}
+  .pricing-callout{grid-template-columns:1fr}
+  .contact-section{padding:64px 24px}
+  footer{padding:20px 24px;flex-direction:column;gap:6px;text-align:center}
+  .status-strip{flex-direction:column;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<nav class="masthead">
+  <a href="#" class="masthead-logo">Vibhu Vineet Kumar <span>·</span> SAP SD</a>
+  <ul class="masthead-nav">
+    <li><a href="#s4hana">S/4HANA</a></li>
+    <li><a href="#o2c">O2C</a></li>
+    <li><a href="#integration">Integration</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#expertise">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-main">
+    <div>
+      <div class="hero-kicker fu">SAP Sales &amp; Distribution · Accenture India</div>
+      <h1 class="hero-headline fu d1">Vibhu<br><em>Vineet</em><br>Kumar</h1>
+      <p class="hero-deck fu d2">SAP SD consultant specialising in O2C architecture, advanced pricing, S/4HANA transformation, IDoc integration, and cross-module solution design. Currently preparing for P4 Expert/SME certification.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;" class="fu d3">
+        <a href="#projects" class="btn-red">View Projects →</a>
+        <a href="#contact" class="btn-ghost">Connect on LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-byline fu d4">
+      <div><div class="byline-role">SAP SD Consultant</div><div class="byline-firm">Accenture India · P3+ Certified</div></div>
+      <div class="byline-sep"></div>
+      <div><div class="byline-role">Target: P4</div><div class="byline-firm">Expert / SME Assessment</div></div>
+    </div>
+  </div>
+  <aside class="hero-sidebar fu d3">
+    <div>
+      <div class="sidebar-badge">Current Level</div>
+      <div class="stat-value-s" style="font-size:48px;margin-top:8px;">P3+</div>
+      <div class="stat-sub-s">Accenture SAP SD Proficiency</div>
+      <div class="progress-wrap"><div class="progress-track"><div class="progress-bar-fill" data-width="75"></div></div></div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-label-s">Target Level</div>
+      <div class="stat-value-s" style="color:#c9a227;">P4</div>
+      <div class="stat-sub-s">Expert / SME — In Progress</div>
+      <div class="progress-wrap"><div class="progress-track"><div class="progress-bar-fill gold-bar" data-width="38"></div></div></div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-label-s">Core Expertise</div>
+      <div class="skill-chips">
+        <span class="chip hot">O2C</span><span class="chip hot">Pricing</span><span class="chip hot">S/4HANA</span>
+        <span class="chip">IDocs</span><span class="chip">SD-FI</span><span class="chip">SD-MM</span>
+        <span class="chip">VOFM</span><span class="chip">BAdI</span><span class="chip">Var Config</span>
+        <span class="chip">RAR</span><span class="chip">aATP</span><span class="chip">EWM</span>
+      </div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-label-s">Employer</div>
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:4px;">Accenture</div>
+      <div class="stat-sub-s">Consulting · India Practice</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-label-s">Notable Project</div>
+      <div style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;">Coal India Limited<br><span style="font-size:12px;color:rgba(255,255,255,.3)">SAP SD + ABAP · Energy / Mining</span></div>
+    </div>
+  </aside>
+</div>
+
+<!-- S/4HANA -->
+<section id="s4hana">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-title-wrap">
+      <div class="section-kicker">S/4HANA Knowledge</div>
+      <h2 class="section-title">SAP S/4HANA — Key Transformations &amp; Modern Capabilities</h2>
+    </div>
+  </div>
+  <div class="s4-grid">
+    <div class="s4-card">
+      <div class="s4-card-num">BP.001</div>
+      <div class="s4-card-title">Business Partner Migration</div>
+      <div class="s4-card-body">In S/4HANA, legacy Customer (KNA1/KNB1) tables are replaced by the centralised Business Partner (BUT000) object. Customer-vendor integration is handled through BP roles — eliminating redundancy and simplifying master data governance. The CVI synchronisation tool handles migration from ECC.</div>
+      <div class="s4-tags"><span class="tag-s red">BP Roles</span><span class="tag-s">BUT000</span><span class="tag-s">CVI Sync</span><span class="tag-s gold">Migration</span></div>
+    </div>
+    <div class="s4-card">
+      <div class="s4-card-num">ATP.002</div>
+      <div class="s4-card-title">Advanced ATP (aATP)</div>
+      <div class="s4-card-body">aATP replaces classic GATP in S/4HANA. It introduces Backorder Processing (BOP), Product Allocation (PA), and Confirmation Strategy — enabling rule-based confirmation logic and priority-driven order fulfilment against constrained stock. Replaces OVZ9-based configuration.</div>
+      <div class="s4-tags"><span class="tag-s red">BOP</span><span class="tag-s">Product Allocation</span><span class="tag-s gold">Confirmation Rules</span></div>
+    </div>
+    <div class="s4-card">
+      <div class="s4-card-num">RAR.003</div>
+      <div class="s4-card-title">Revenue Accounting (IFRS 15)</div>
+      <div class="s4-card-body">SAP RAR implements the IFRS 15 / ASC 606 five-step revenue recognition model. SD billing documents post to RAR, where Performance Obligations (POBs), Standalone Selling Prices (SSPs), and contract modifications are managed separately from standard FI posting.</div>
+      <div class="s4-tags"><span class="tag-s red">IFRS 15</span><span class="tag-s">POBs</span><span class="tag-s">SSP</span><span class="tag-s gold">RAR</span></div>
+    </div>
+    <div class="s4-card">
+      <div class="s4-card-num">OUT.004</div>
+      <div class="s4-card-title">BRF+ Output Management</div>
+      <div class="s4-card-body">Classic NACE condition-based output is replaced by SAP BRF+ in S/4HANA. Output conditions and determination rules are maintained as decision tables in BRF+, offering greater flexibility and separation from ABAP. Forms connect via output items in Adobe Forms or Smart Forms.</div>
+      <div class="s4-tags"><span class="tag-s red">BRF+</span><span class="tag-s">Decision Tables</span><span class="tag-s gold">Adobe Forms</span></div>
+    </div>
+    <div class="s4-card">
+      <div class="s4-card-num">FIO.005</div>
+      <div class="s4-card-title">SAP Fiori &amp; Simplifications</div>
+      <div class="s4-card-body">S/4HANA replaces many SAPGUI transactions with Fiori apps. Key SD Fiori apps include Manage Sales Orders, Create Billing Documents, and Monitor ATP Situation. The S/4HANA Simplification List is the essential reference for deprecated transactions and migration paths for each.</div>
+      <div class="s4-tags"><span class="tag-s red">Fiori Apps</span><span class="tag-s">Simplification List</span><span class="tag-s gold">SAPGUI → Fiori</span></div>
+    </div>
+    <div class="s4-card">
+      <div class="s4-card-num">MIG.006</div>
+      <div class="s4-card-title">ECC → S/4HANA Migration</div>
+      <div class="s4-card-body">Three migration paths: Greenfield (new implementation), Brownfield (system conversion using SUM/DMLT), and Selective Data Migration. Each has distinct implications for SD customising, BAdIs, user exits, pricing routines, and master data structures including Business Partner and material master.</div>
+      <div class="s4-tags"><span class="tag-s red">Greenfield</span><span class="tag-s">Brownfield</span><span class="tag-s">SUM Tool</span><span class="tag-s gold">Data Migration</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- O2C -->
+<section id="o2c" class="o2c-section">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-title-wrap">
+      <div class="section-kicker">O2C Process Expertise</div>
+      <h2 class="section-title">Order-to-Cash — End-to-End Architecture</h2>
+    </div>
+  </div>
+  <div class="o2c-steps">
+    <div class="o2c-step active" onclick="setStep(0)"><div class="o2c-step-n">01</div><div class="o2c-step-name">Pre-Sales</div><div class="o2c-step-code">VA11 / VA21</div></div>
+    <div class="o2c-step" onclick="setStep(1)"><div class="o2c-step-n">02</div><div class="o2c-step-name">Sales Order</div><div class="o2c-step-code">VA01</div></div>
+    <div class="o2c-step" onclick="setStep(2)"><div class="o2c-step-n">03</div><div class="o2c-step-name">Delivery</div><div class="o2c-step-code">VL01N</div></div>
+    <div class="o2c-step" onclick="setStep(3)"><div class="o2c-step-n">04</div><div class="o2c-step-name">Goods Issue</div><div class="o2c-step-code">VL02N</div></div>
+    <div class="o2c-step" onclick="setStep(4)"><div class="o2c-step-n">05</div><div class="o2c-step-name">Billing</div><div class="o2c-step-code">VF01 / VF04</div></div>
+    <div class="o2c-step" onclick="setStep(5)"><div class="o2c-step-n">06</div><div class="o2c-step-name">FI Posting</div><div class="o2c-step-code">VKOA / F-28</div></div>
+  </div>
+  <div class="o2c-detail-area active" id="d0">
+    <div><div class="o2c-detail-title">Pre-Sales Activities</div><div class="o2c-detail-sub">Inquiries · Quotations · Contracts</div><div class="o2c-detail-body">Pre-sales covers Inquiries (VA11) and Quotations (VA21) — reference documents that feed downstream into Sales Orders. Outline Agreements (contracts VA41 and scheduling agreements VA31) define long-term supply relationships. Copy control routines (VTAA/VTLA) govern data flow between document types, including pricing carry-forward and quantity referencing.</div></div>
+    <div><div class="o2c-meta-row"><div class="o2c-meta-label">Key T-Codes</div><div class="o2c-meta-val">VA11, VA21, VA41, VA31</div></div><div class="o2c-meta-row"><div class="o2c-meta-label">Config Objects</div><div class="o2c-meta-val">Copy Control VTAA, Partner Determination, Pricing</div></div><div class="o2c-meta-row"><div class="o2c-meta-label">Key Concepts</div><div class="o2c-meta-val">Document Flow, Reason for Rejection, Target Qty, Validity Dates</div></div></div>
+  </div>
+  <div class="o2c-detail-area" id="d1">
+    <div><div class="o2c-detail-title">Sales Order Processing</div><div class="o2c-detail-sub">Pricing · Credit Check · ATP · Partner Det.</div><div class="o2c-detail-body">The Sales Order (VA01) is the central O2C document. At creation, SAP simultaneously executes Pricing (OVKK procedure), Credit Management (FD32/OVA8), Availability Check (OVZZ — checking rule + business event), Material Determination, Output Determination, and Partner Determination. Item categories (VOV7) and schedule line categories (VOV6) drive fulfilment logic — controlling delivery relevance, billing relevance, and MRP planning.</div></div>
+    <div><div class="o2c-meta-row"><div class="o2c-meta-label">Key T-Codes</div><div class="o2c-meta-val">VA01, VA02, VA05, V.26, VD52</div></div><div class="o2c-meta-row"><div class="o2c-meta-label">Config Objects</div><div class="o2c-meta-val">Sales Doc Type VOV8, Item Category VOV7, Schedule Line VOV6</div></div><div class="o2c-meta-row"><div class="o2c-meta-label">Key Tables</div><div class="o2c-meta-val">VBAK (header), VBAP (item), VBEP (schedule line)</div></div></div>
+  </div>
+  <div class="o2c-detail-area" id="d2">
+    <div><div class="o2c-detail-title">Delivery Processing</div><div class="o2c-detail-sub">VL01N · Picking · Packing · Route Det.</div><div class="o2c-detail-body">Outbound Deliveries (LF doc type) are created via VL01N or the delivery due list (VL10A/VL10B). Picking (WM/EWM), packing (HU management), weight/volume determination, and route determination occur here. Delivery item categories control GI relevance, packing, and billing relevance. Shipping condition and route drive carrier and transit time calculation.</div></div>
+    <div><div class="o2c-meta-row"><div class="o2c-meta-label">Key T-Codes</div><div class="o2c-meta-val">VL01N, VL02N, VL10A, VL10B, VL04</div></div><div class="o2c-meta-row"><div class="o2c-meta-label">Config Objects</div><div class="o2c-meta-val">Delivery Type OVLK, Delivery Item Category, Copy Control VTLA</div></div><div class="o2c-meta-row"><div class="o2c-meta-label">Key Tables</div><div class="o2c-meta-val">LIKP (delivery header), LIPS (delivery item)</div></div></div>
+  </div>
+  <div class="o2c-detail-area" id="d3">
+    <div><div class="o2c-detail-title">Post Goods Issue</div><div class="o2c-detail-sub">VL02N · Mvt Type 601 · FI Impact</div><div class="o2c-detail-body">Post Goods Issue (PGI) via VL02N triggers Movement Type 601 — reducing stock and creating a Material Document (MKPF/MSEG) and FI document simultaneously. PGI is the legal point of ownership transfer. The actual GI date drives billing date determination and revenue recognition timing in RAR/IFRS 15. Reversal uses movement type 602.</div></div>
+    <div><div class="o2c-meta-row"><div class="o2c-meta-label">Key T-Codes</div><div class="o2c-meta-val">VL02N, MB51, MMBE (stock overview)</div></div><div class="o2c-meta-row"><div class="o2c-meta-label">Movement Type</div><div class="o2c-meta-val">601 — GI for Sales Order; 602 — Reversal</div></div><div class="o2c-meta-row"><div class="o2c-meta-label">FI Posting</div><div class="o2c-meta-val">Dr COGS / Cr Inventory — via Account Keys GBB / VAX</div></div></div>
+  </div>
+  <div class="o2c-detail-area" id="d4">
+    <div><div class="o2c-detail-title">Billing &amp; Invoice Processing</div><div class="o2c-detail-sub">VF01 · Billing Plans · Intercompany · Rebates</div><div class="o2c-detail-body">Billing documents (F2, LR, RE, G2, L2) are created from delivery or order. Billing Type (VOFA) controls document class, account determination, and output. Billing Plans support project or subscription billing. Intercompany billing (IV) creates internal invoices between company codes. Copy control VTFL/VTFA controls pricing carry-over and re-pricing behaviour.</div></div>
+    <div><div class="o2c-meta-row"><div class="o2c-meta-label">Key T-Codes</div><div class="o2c-meta-val">VF01, VF04, VF11, VOFA, VBO1 (rebates)</div></div><div class="o2c-meta-row"><div class="o2c-meta-label">Config Objects</div><div class="o2c-meta-val">Billing Type VOFA, Copy Control VTFL / VTFA</div></div><div class="o2c-meta-row"><div class="o2c-meta-label">Key Tables</div><div class="o2c-meta-val">VBRK (billing header), VBRP (billing item)</div></div></div>
+  </div>
+  <div class="o2c-detail-area" id="d5">
+    <div><div class="o2c-detail-title">FI Account Determination &amp; Cash Receipt</div><div class="o2c-detail-sub">VKOA · Account Keys · Open Item Clearing</div><div class="o2c-detail-body">Billing release creates an FI document via Account Determination (VKOA). Condition types carry Account Keys — ERL for revenue, ERS for sales deductions, ERF for freight. The G/L account is derived from Chart of Accounts + Account Assignment Group (Customer + Material) + Account Key. Customer payment is matched against the open AR item in F-28 or cleared via F-32.</div></div>
+    <div><div class="o2c-meta-row"><div class="o2c-meta-label">Key T-Codes</div><div class="o2c-meta-val">VKOA, VF02 (release), F-28, F-32</div></div><div class="o2c-meta-row"><div class="o2c-meta-label">Account Keys</div><div class="o2c-meta-val">ERL (revenue), ERS (deductions), ERF (freight), MWS (tax)</div></div><div class="o2c-meta-row"><div class="o2c-meta-label">Key Tables</div><div class="o2c-meta-val">T030 (G/L), BSID (open items), BKPF (FI doc header)</div></div></div>
+  </div>
+</section>
+
+<!-- INTEGRATION -->
+<section id="integration">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-title-wrap">
+      <div class="section-kicker">Cross-Module Integration</div>
+      <h2 class="section-title">SD Integration Landscape — Four Key Module Touchpoints</h2>
+    </div>
+  </div>
+  <div class="int-grid">
+    <div class="int-card">
+      <div class="int-card-header"><div class="int-card-title">SD ↔ FI / CO</div><div class="int-card-badge">Finance</div></div>
+      <ul class="int-list">
+        <li>Account determination via VKOA — keys ERL, ERS, ERF, MWS</li>
+        <li>Credit Management — FD32 master, OVA8 automatic check rules</li>
+        <li>Billing document release to FI — Dr AR / Cr Revenue</li>
+        <li>CO-PA integration — profitability segment on billing items</li>
+        <li>Dunning process — F150, FBMP, FBD3 for overdue AR</li>
+        <li>Revenue Accounting (RAR / IFRS 15) — POB &amp; SSP management</li>
+        <li>Intercompany billing — IV document type, cross-company code</li>
+      </ul>
+    </div>
+    <div class="int-card">
+      <div class="int-card-header"><div class="int-card-title">SD ↔ MM / PP</div><div class="int-card-badge">Materials</div></div>
+      <ul class="int-list">
+        <li>Availability Check — OVZZ (checking rule), OVZG (scope)</li>
+        <li>Movement Type 601 triggered at Post Goods Issue</li>
+        <li>MRP integration via schedule line categories (VOV6)</li>
+        <li>Third-party order processing — PR → PO auto-creation</li>
+        <li>Individual purchase order — customer stock management</li>
+        <li>Stock Transfer Orders — inter-plant and intercompany</li>
+        <li>aATP Backorder Processing (BOP) in S/4HANA</li>
+      </ul>
+    </div>
+    <div class="int-card">
+      <div class="int-card-header"><div class="int-card-title">SD ↔ EWM / WM</div><div class="int-card-badge">Warehouse</div></div>
+      <ul class="int-list">
+        <li>Delivery → Warehouse Task creation in EWM</li>
+        <li>Picking confirmation via WM (LT0A / LT1A)</li>
+        <li>Handling Unit (HU) management and packing</li>
+        <li>Decentralised EWM — separate system integration</li>
+        <li>Goods movement confirmation updates delivery qty</li>
+        <li>Serial number and batch management in deliveries</li>
+        <li>Pack station assignment and HU weight/volume</li>
+      </ul>
+    </div>
+    <div class="int-card">
+      <div class="int-card-header"><div class="int-card-title">SD ↔ IDocs / EDI</div><div class="int-card-badge">Integration</div></div>
+      <ul class="int-list">
+        <li>ORDERS05 — Inbound electronic sales order creation</li>
+        <li>DELVRY07 — Outbound delivery ASN / DESADV message</li>
+        <li>INVOIC02 — Outbound invoice for EDI billing</li>
+        <li>Partner profiles (WE20) — message type, process code</li>
+        <li>IDoc status monitoring — WE05, WE09, BD87</li>
+        <li>Error handling and manual reprocessing (BD87)</li>
+        <li>ALE distribution model for org unit IDocs</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pricing-callout">
+    <div>
+      <div class="pc-kicker">Advanced Pricing</div>
+      <div class="pc-title">Condition Technique Architecture</div>
+      <div class="pc-body">Pricing Procedure (OVKK) → Condition Types (V/06) → Access Sequences (V/07) → Condition Tables. Step/Counter logic drives calculation order. Requirement and alternative calculation routines in VOFM control when a condition fires and how its value is derived at runtime.</div>
+    </div>
+    <div>
+      <div class="pc-kicker">Rebate Processing</div>
+      <div class="pc-title">Agreements &amp; Settlement</div>
+      <div class="pc-body">Rebate agreements (VBO1) accumulate accruals against billing documents throughout the validity period. Partial or final settlement creates a credit memo request. Condition types B001–B004 handle standard rebate scenarios. Retroactive pricing requires special handling in S/4HANA's RAR environment.</div>
+    </div>
+    <div>
+      <div class="pc-kicker">VOFM Routines</div>
+      <div class="pc-title">Custom Pricing Logic</div>
+      <div class="pc-body">VOFM is the repository for Requirements, Formulas, and Base Value routines. Custom ABAP routines enable dynamic pricing — calculating condition values based on weight, calendar dates, customer classification, or runtime variables — extending far beyond standard condition records.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="proj-section">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-title-wrap">
+      <div class="section-kicker">Project Experience</div>
+      <h2 class="section-title">Real-World Implementations &amp; Deliverables</h2>
+    </div>
+  </div>
+  <div class="proj-article">
+    <div class="proj-spine">
+      <div>
+        <div class="proj-client">Coal India</div>
+        <div class="proj-industry">Energy · Mining · PSU</div>
+      </div>
+      <div class="proj-spine-meta">
+        <strong>Employer</strong>Accenture India
+        <strong>Module</strong>SAP SD + ABAP
+        <strong>Scope</strong>Config &amp; Dev
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="proj-title">SAP SD / ABAP Implementation — Coal India Limited</div>
+      <p class="proj-lead">Delivered SAP SD configuration and custom ABAP development for Coal India, one of India's largest public sector enterprises. Work spanned the full SD document chain — from sales order configuration, pricing procedure design, to delivery and billing setup — alongside ABAP-level enhancements including User Exits, BAdIs, and custom report development to meet energy-sector specific business requirements.</p>
+      <div class="deliverables-grid">
+        <div class="deliverable">Sales document type &amp; item category configuration</div>
+        <div class="deliverable">Pricing procedure design with custom VOFM routines</div>
+        <div class="deliverable">Output determination &amp; form configuration</div>
+        <div class="deliverable">ABAP User Exits &amp; BAdI implementations</div>
+        <div class="deliverable">Delivery and billing document flow end-to-end</div>
+        <div class="deliverable">Custom reports and ALV output programs</div>
+      </div>
+    </div>
+  </div>
+  <div class="proj-article">
+    <div class="proj-spine">
+      <div>
+        <div class="proj-client">Variant Config</div>
+        <div class="proj-industry">Self-Initiated · ECC</div>
+      </div>
+      <div class="proj-spine-meta">
+        <strong>Platform</strong>SAP ECC Live System
+        <strong>Module</strong>VC + SD + MM
+        <strong>Type</strong>E2E Practice
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="proj-title">End-to-End SAP Variant Configuration — Live System Practice</div>
+      <p class="proj-lead">Independently executed a full Variant Configuration scenario on a live SAP ECC system — covering KMAT material creation, Class Type 300, characteristics in CT04 with the Restrictable flag, object dependencies in CU01, Configuration Profile in CU41, Super BOM, and variant pricing via condition type VA00. Navigated real system errors M3317 and CU027, and implemented a workaround for the SCE limitation by substituting Selection Conditions with Actions and Preconditions.</p>
+      <div class="deliverables-grid">
+        <div class="deliverable">KMAT material + Class Type 300 setup in MM01</div>
+        <div class="deliverable">CT04 characteristics with Restrictable flag (key lesson)</div>
+        <div class="deliverable">CU01 object dependencies — preconditions, actions</div>
+        <div class="deliverable">CU41 configuration profile &amp; Super BOM</div>
+        <div class="deliverable">VA00 variant pricing condition integration</div>
+        <div class="deliverable">Error resolution: M3317, CU027 &amp; SCE workaround</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div class="section-title-wrap">
+      <div class="section-kicker">Skills &amp; Proficiency</div>
+      <h2 class="section-title">Technical Depth Across SAP SD &amp; Adjacent Domains</h2>
+    </div>
+  </div>
+  <div class="skills-layout">
+    <div class="skill-group">
+      <div class="skill-group-title">SAP SD Core</div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">O2C Process Architecture</span><span class="skill-pct">95%</span></div><div class="skill-track"><div class="skill-fill" data-w="95"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Pricing &amp; Condition Technique</span><span class="skill-pct">92%</span></div><div class="skill-track"><div class="skill-fill" data-w="92"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Delivery &amp; Billing Configuration</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" data-w="90"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Partner &amp; Output Determination</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" data-w="88"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Credit Management</span><span class="skill-pct">82%</span></div><div class="skill-track"><div class="skill-fill" data-w="82"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Variant Configuration (VC)</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-fill" data-w="75"></div></div></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">S/4HANA &amp; Modern SAP</div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Business Partner Migration</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill alt" data-w="85"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Advanced ATP (aATP / BOP)</span><span class="skill-pct">78%</span></div><div class="skill-track"><div class="skill-fill alt" data-w="78"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">RAR / IFRS 15</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-fill alt" data-w="75"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">BRF+ Output Management</span><span class="skill-pct">72%</span></div><div class="skill-track"><div class="skill-fill alt" data-w="72"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">SAP Fiori (SD Apps)</span><span class="skill-pct">68%</span></div><div class="skill-track"><div class="skill-fill alt" data-w="68"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">ECC → S/4HANA Migration</span><span class="skill-pct">70%</span></div><div class="skill-track"><div class="skill-fill alt" data-w="70"></div></div></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Cross-Module Integration</div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">SD-FI Account Determination</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" data-w="88"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">SD-MM / ATP / MRP</span><span class="skill-pct">82%</span></div><div class="skill-track"><div class="skill-fill" data-w="82"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">IDoc Architecture (SD Message Types)</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" data-w="80"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">SD-EWM / WM Integration</span><span class="skill-pct">70%</span></div><div class="skill-track"><div class="skill-fill" data-w="70"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Intercompany Billing</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-fill" data-w="75"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">FI Dunning (AR)</span><span class="skill-pct">65%</span></div><div class="skill-track"><div class="skill-fill" data-w="65"></div></div></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">ABAP &amp; Technical SD</div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">ABAP Reports &amp; ALV</span><span class="skill-pct">78%</span></div><div class="skill-track"><div class="skill-fill alt" data-w="78"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">User Exits &amp; BAdIs</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill alt" data-w="80"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Enhancement Frameworks</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-fill alt" data-w="75"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">VOFM Pricing Routines</span><span class="skill-pct">72%</span></div><div class="skill-track"><div class="skill-fill alt" data-w="72"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">SAP Table Knowledge (SD/FI)</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill alt" data-w="88"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">LSMW / BDC (Data Migration)</span><span class="skill-pct">65%</span></div><div class="skill-track"><div class="skill-fill alt" data-w="65"></div></div></div>
+    </div>
+  </div>
+  <table class="tcode-table">
+    <thead><tr><th>T-Code</th><th>Description</th><th>Area</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr><td>VA01 / VA02</td><td>Create / Change Sales Order</td><td>SD Core</td><td>Primary O2C entry point with pricing, ATP, credit, partner determination</td></tr>
+      <tr><td>VL01N / VL02N</td><td>Create / Change Outbound Delivery</td><td>Delivery</td><td>Picking, packing, Post Goods Issue execution</td></tr>
+      <tr><td>VF01 / VF04</td><td>Create Billing / Billing Due List</td><td>Billing</td><td>Invoice creation from delivery or order reference</td></tr>
+      <tr><td>VKOA</td><td>Account Determination Configuration</td><td>SD-FI</td><td>G/L account assignment via account keys and assignment groups</td></tr>
+      <tr><td>OVKK</td><td>Pricing Procedure Assignment</td><td>Pricing</td><td>Assigns pricing procedure to sales area + doc pric proc + cust pric proc</td></tr>
+      <tr><td>VOV8 / VOV7</td><td>Sales Doc Type / Item Category</td><td>Config</td><td>Controls document class, item behaviour, delivery and billing relevance</td></tr>
+      <tr><td>WE20 / WE05</td><td>Partner Profiles / IDoc Monitoring</td><td>Integration</td><td>IDoc partner setup and status tracking</td></tr>
+      <tr><td>FD32</td><td>Customer Credit Master</td><td>SD-FI</td><td>Credit limit, risk category, and credit exposure management</td></tr>
+      <tr><td>VOFM</td><td>Pricing Routines Repository</td><td>Advanced</td><td>Custom ABAP requirement, formula, and base value routines</td></tr>
+      <tr><td>CT04 / CU41</td><td>Characteristics / Config Profile</td><td>Variant Config</td><td>VC master data — characteristics and configuration profile definition</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-kicker" style="justify-content:center;display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+    <span style="width:24px;height:1px;background:var(--red);display:inline-block;"></span>Contact<span style="width:24px;height:1px;background:var(--red);display:inline-block;"></span>
+  </div>
+  <h2 class="contact-headline">Let's discuss <em>SAP SD</em><br>— or explore what's next</h2>
+  <p class="contact-sub">Actively building towards P4 SME certification. Open to connecting with SAP professionals, project leads, and recruiters for challenging SD engagements or career opportunities.</p>
+  <div class="contact-btns">
+    <a href="https://www.linkedin.com/in/" target="_blank" class="btn-red">Connect on LinkedIn →</a>
+    <a href="mailto:" class="btn-ghost">Send an Email</a>
+  </div>
+  <div class="status-strip">
+    <div class="status-item"><span class="status-dot"></span> Accenture India · Active</div>
+    <div class="status-item"><span class="status-dot gold"></span> P4 Preparation · In Progress</div>
+    <div class="status-item"><span class="status-dot green"></span> Open to Opportunities</div>
+  </div>
+</section>
+
+<footer>
+  <strong>Vibhu Vineet Kumar</strong> &nbsp;·&nbsp; SAP SD Consultant &nbsp;·&nbsp; Accenture India
+  <span>Portfolio · 2025</span>
+</footer>
+
+<script>
+function setStep(i) {
+  document.querySelectorAll('.o2c-step').forEach((s,j) => s.classList.toggle('active', j===i));
+  for(let k=0;k<6;k++){
+    const d=document.getElementById('d'+k);
+    if(d) d.classList.toggle('active',k===i);
+  }
+}
+function animateSkills(){
+  document.querySelectorAll('.skill-fill[data-w]').forEach(el=>{
+    const sec=el.closest('section');
+    if(sec && sec.getBoundingClientRect().top<window.innerHeight*.9)
+      el.style.width=el.dataset.w+'%';
+  });
+}
+window.addEventListener('scroll',animateSkills);
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.querySelectorAll('.progress-bar-fill[data-width]').forEach(el=>{
+      el.style.width=el.dataset.width+'%';
+    });
+  },500);
+  animateSkills();
+});
+</script>
+</body>
+</html>
